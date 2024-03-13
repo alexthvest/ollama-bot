@@ -13,7 +13,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var supportedModels = []string{"codellama:7b", "llama2:13b", "llama2-uncensored:7b"}
+var supportedModels = []string{"openhermes", "mistral", "wizard-vicuna-uncensored:13b-q4_0", "codellama:7b", "llama2:13b", "llama2-uncensored:7b"}
 
 func main() {
 	if err := godotenv.Load(); err != nil {

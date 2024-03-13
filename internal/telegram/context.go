@@ -1,13 +1,9 @@
 package telegram
 
 import (
-	"errors"
+	"fmt"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-)
-
-var (
-	ErrArgumentNotFound = errors.New("argument not found")
 )
 
 type Context struct {
@@ -23,7 +19,7 @@ type Argument interface {
 func (c Context) Argument(name string, value Argument) error {
 	argValue, ok := c.args[name]
 	if !ok {
-		return ErrArgumentNotFound
+		return fmt.Errorf("unknown argument: %s", name)
 	}
 	return value.Parse(argValue)
 }

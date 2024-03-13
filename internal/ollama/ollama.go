@@ -12,8 +12,8 @@ type Ollama struct {
 	mu      *sync.Mutex
 }
 
-func NewOllama(name string, prompt string, model string) Ollama {
-	ollama := Ollama{
+func NewOllama(name string, prompt string, model string) *Ollama {
+	ollama := &Ollama{
 		name:    name,
 		model:   model,
 		history: make([]Message, 0),

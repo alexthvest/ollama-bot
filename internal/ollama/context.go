@@ -3,13 +3,13 @@ package ollama
 import "sync"
 
 type Context struct {
-	ollamas map[string]Ollama
+	ollamas map[string]*Ollama
 	mu      *sync.Mutex
 }
 
 func NewContext() Context {
 	return Context{
-		ollamas: make(map[string]Ollama),
+		ollamas: make(map[string]*Ollama),
 		mu:      &sync.Mutex{},
 	}
 }
@@ -38,7 +38,7 @@ func (c *Context) RemoveOllama(name string) bool {
 	return true
 }
 
-func (c *Context) Ollama(name string) (Ollama, bool) {
+func (c *Context) Ollama(name string) (*Ollama, bool) {
 	ollama, ok := c.ollamas[name]
 	return ollama, ok
 }
